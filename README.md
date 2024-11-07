@@ -19,7 +19,7 @@ with:
 
 ``` r
 # Install summarystats package from GitHub
-devtools::install_github("stat545ubc-2024/summarystats", ref="0.1.0")
+devtools::install_github("stat545ubc-2024/summarystats", ref="0.2.0")
 ```
 
 ## Example
