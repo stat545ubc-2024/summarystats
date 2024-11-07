@@ -2,6 +2,8 @@
 #'
 #' This function calculates summary statistics (min, max, range, mean, meadian, standard deviation and count) of one numerical variable across the groups of one categorical variable from a data set.
 #'
+#' @export
+#'
 #' @param data A data frame containing the variables of interest.
 #' It is named 'data' as it represents the data set that the function operates on.
 #' @param cat_var A categorical variable within the data set.
@@ -19,6 +21,8 @@
 #' # Examples with the penguins data set from palmerpenguins package
 #' summary_stats_variable(penguins,species,body_mass_g, na_handling=TRUE)
 #' summary_stats_variable(penguins, island, flipper_length_mm, na_handling = TRUE)
+#'
+#' @import dplyr
 #'
 summary_stats_variable <- function(data, cat_var, num_var, na_handling = TRUE) {
   #Check if cat_var is a factor. If not, stop the execution of the function and execute an error
