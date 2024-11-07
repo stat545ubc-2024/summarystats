@@ -27,8 +27,7 @@ A data frame with summary statistics (min, max, range, mean, median, standard de
 This function calculates summary statistics (min, max, range, mean, meadian, standard deviation and count) of one numerical variable across the groups of one categorical variable from a data set.
 }
 \examples{
-# Examples with the penguins data set from palmerpenguins package
-summary_stats_variable(penguins,species,body_mass_g, na_handling=TRUE)
-summary_stats_variable(penguins, island, flipper_length_mm, na_handling = TRUE)
+# Examples with the iris data set
+summary_stats_variable(iris,Species,Sepal.Length, na_handling=TRUE)
 
 }

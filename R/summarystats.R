@@ -18,33 +18,33 @@
 #'
 #'
 #' @examples
-#' # Examples with the penguins data set from palmerpenguins package
-#' summary_stats_variable(penguins,species,body_mass_g, na_handling=TRUE)
-#' summary_stats_variable(penguins, island, flipper_length_mm, na_handling = TRUE)
+#' # Examples with the iris data set
+#' summary_stats_variable(iris,Species,Sepal.Length, na_handling=TRUE)
 #'
-#' @import dplyr
+#' @importFrom dplyr %>%
 #'
 summary_stats_variable <- function(data, cat_var, num_var, na_handling = TRUE) {
-  #Check if cat_var is a factor. If not, stop the execution of the function and execute an error
-  if (!is.factor(data %>% pull({{cat_var}}))) {
+  # Check if cat_var is a factor. If not, stop the execution of the function and execute an error
+  if (!is.factor(dplyr::pull(data, {{cat_var}}))) {
     stop('Error: The provided cat_var is not a categorical variable. Please provide a factor variable.')
   }
 
-  #Check if num_var is numeric. If not, stop the execution of the function and execute an error
-  if (!is.numeric(data %>% pull({{num_var}}))) {
+  # Check if num_var is numeric. If not, stop the execution of the function and execute an error
+  if (!is.numeric(dplyr::pull(data, {{num_var}}))) {
     stop('Error: The provided num_var is not numeric. Please provide a numeric variable.')
   }
 
-  #Calculate summary statistics for the numerical variable by groups of the categorical variable
+  # Calculate summary statistics for the numerical variable by groups of the categorical variable
   data %>%
-    group_by({{cat_var}}) %>%
-    summarise(
+    dplyr::group_by({{cat_var}}) %>%
+    dplyr::summarise(
       min = min({{num_var}}, na.rm = na_handling),
       max = max({{num_var}}, na.rm = na_handling),
       range = max({{num_var}}, na.rm = na_handling) - min({{num_var}}, na.rm = na_handling),
       mean = mean({{num_var}}, na.rm = na_handling),
-      median = median({{num_var}}, na.rm = na_handling),
-      sd = sd({{num_var}}, na.rm = na_handling),
-      count = n()
+      median = stats::median({{num_var}}, na.rm = na_handling),
+      sd = stats::sd({{num_var}}, na.rm = na_handling),
+      count = dplyr::n()
     )
 }
+

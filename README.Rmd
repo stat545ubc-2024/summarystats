@@ -1,0 +1,40 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# summarystats
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of `summarystats` is to provide a simple and efficient way to calculate summary statistics for a numerical variable grouped by a categorical variable. This package is useful for data exploration and quick analysis of summary metrics such as minimum, maximum, mean, median, standard deviation, and count within each category.
+
+## Installation
+
+You can install the development version of `summarystats` from GitHub with:
+
+```r
+# Install summarystats package from GitHub
+devtools::install_github("stat545ubc-2024/summarystats", ref="0.1.0")
+```
+
+## Example
+
+This is a basic example that shows how to use the `summary_stats_variable` function to calculate summary statistics for a numerical variable grouped by a categorical variable:
+
+```{r example}
+library(summarystats)
+
+# Calculate summary statistics for the variable 'Sepal.Length' grouped by 'Species' from the iris dataset
+summary_stats_variable(iris,Species,Sepal.Length, na_handling=TRUE)
